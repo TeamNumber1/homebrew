@@ -95,6 +95,9 @@ module Homebrew extend self
 
   attr_accessor :failed
   alias_method :failed?, :failed
+
+  @cmd_help = {}
+  attr_reader :cmd_help
 end
 
 require 'metafiles'
