@@ -16,7 +16,7 @@ $:.unshift(HOMEBREW_LIBRARY_PATH + '/vendor')
 $:.unshift(HOMEBREW_LIBRARY_PATH)
 require 'global'
 
-case ARGV.first when '-h', '--help', '--usage', '-?', 'help', nil
+case ARGV.first when '-h', '--help', '--usage', '-?', nil
   require 'cmd/help'
   puts Homebrew.help_s
   exit ARGV.first ? 0 : 1

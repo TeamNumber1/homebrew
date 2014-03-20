@@ -17,7 +17,7 @@ module Homebrew extend self
       cmd_help[cmd] = block
     end
   end
-  def print_help_for cmd
+  def format_help_for cmd
     begin
       unless defined? Kramdown
         require 'rubygems'
@@ -28,6 +28,9 @@ module Homebrew extend self
     end
     data = help_for(cmd)
     doc  = Kramdown::Document.new(data)
-    puts Converter.convert(doc)
+    Converter.convert(doc)
+  end
+  def print_help_for cmd
+    puts format_help_for(cmd)
   end
 end

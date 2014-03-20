@@ -24,6 +24,10 @@ Further help:
   brew home
 EOS
 
+require 'help'
+require 'cmd/install'
+require 'erb'
+
 # NOTE Keep the lenth of vanilla --help less than 25 lines!
 # This is because the default Terminal height is 25 lines. Scrolling sucks
 # and concision is important. If more help is needed we should start
@@ -33,9 +37,18 @@ EOS
 
 module Homebrew extend self
   def help
-    puts HOMEBREW_HELP
+    if ARGV.include? "--full"
+      puts full_help
+    else
+      puts HOMEBREW_HELP
+    end
   end
   def help_s
     HOMEBREW_HELP
+  end
+  def full_help
+    source = HOMEBREW_CONTRIB/"manpages/brew.1.md.erb"
+    erb = ERB.new(File.read source)
+    erb.result
   end
 end

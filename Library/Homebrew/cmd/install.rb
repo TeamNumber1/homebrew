@@ -6,7 +6,7 @@ require 'help'
 module Homebrew extend self
   help_for :install do
     <<-eos
-    usage: `install [--debug] [--env=<std|super>] [--ignore-dependencies] [--only-dependencies] [--fresh] [--cc=<compiler>] [--build-from-source] [--devel|--HEAD]` <formula>:
+    `install [--debug] [--env=<std|super>] [--ignore-dependencies] [--only-dependencies] [--fresh] [--cc=<compiler>] [--build-from-source] [--devel|--HEAD]` <formula>:
         Install <formula>.
 
         <formula> is usually the name of the formula to install, but it can be specified
