@@ -1,3 +1,4 @@
+require 'help'
 require 'cmd/install'
 require 'cmd/outdated'
 
@@ -8,7 +9,19 @@ class Fixnum
 end
 
 module Homebrew extend self
+  help_for :upgrade do
+    <<-eos
+    `upgrade [install-options]` [<formulae>]:
+        Upgrade outdated, unpinned brews.
+
+        Options for the `install` command are also valid here.
+
+        If <formulae> are given, upgrade only the specified brews (but do so even
+        if they are pinned; see `pin`, `unpin`).
+eos
+  end
   def upgrade
+    return print_help_for(:upgrade) if ARGV.include?('-h') || ARGV.include?('--help')
     Homebrew.perform_preinstall_checks
 
     if ARGV.named.empty?

@@ -25,7 +25,10 @@ Further help:
 EOS
 
 require 'help'
+# Commands with their own help docstrings.
+require 'cmd/create'
 require 'cmd/install'
+require 'cmd/upgrade'
 require 'erb'
 
 # NOTE Keep the lenth of vanilla --help less than 25 lines!

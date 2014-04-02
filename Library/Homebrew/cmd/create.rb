@@ -1,10 +1,31 @@
+require 'help'
 require 'formula'
 require 'blacklist'
 
 module Homebrew extend self
+  help_for :create do
+    <<-eos
+    `create <URL> [--autotools|--cmake] [--no-fetch] [--set-name <name>] [--set-version <version>]`:
+        Generate a formula for the downloadable file at <URL> and open it in the editor.
+        Homebrew will attempt to automatically derive the formula name
+        and version, but if it fails, you'll have to make your own template. The wget
+        formula serves as a simple example. For a complete cheat-sheet, have a look at
 
+        `$(brew --repository)/Library/Contributions/example-formula.rb`
+
+        If `--autotools` is passed, create a basic template for an Autotools-style build.
+        If `--cmake` is passed, create a basic template for a CMake-style build.
+
+        If `--no-fetch` is passed, Homebrew will not download <URL> to the cache and
+        will thus not add the SHA-1 to the formula for you.
+
+        The options `--set-name` and `--set-version` each take an argument and allow
+        you to explicitly set the name and version of the package you are creating.
+eos
+  end
   # Create a formula from a tarball URL
   def create
+    return print_help_for(:create) if ARGV.include?('-h') || ARGV.include?('--help')
 
     # Allow searching MacPorts or Fink.
     if ARGV.include? '--macports'
