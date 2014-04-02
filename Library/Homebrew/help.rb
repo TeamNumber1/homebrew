@@ -13,6 +13,7 @@ module Homebrew extend self
           line.sub /^#{indent}/, ''
         end.join
       end
+      help_string.strip
     else
       cmd_help[cmd] = block
     end

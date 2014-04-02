@@ -67,22 +67,7 @@ Note that these flags should only appear after a command.
   * `commands`:
     Show a list of built-in and external commands.
 
-  * `create <URL> [--autotools|--cmake] [--no-fetch] [--set-name <name>] [--set-version <version>]`:
-    Generate a formula for the downloadable file at <URL> and open it in the editor.
-    Homebrew will attempt to automatically derive the formula name
-    and version, but if it fails, you'll have to make your own template. The wget
-    formula serves as a simple example. For a complete cheat-sheet, have a look at
-
-    `$(brew --repository)/Library/Contributions/example-formula.rb`
-
-    If `--autotools` is passed, create a basic template for an Autotools-style build.
-    If `--cmake` is passed, create a basic template for a CMake-style build.
-
-    If `--no-fetch` is passed, Homebrew will not download <URL> to the cache and
-    will thus not add the SHA-1 to the formula for you.
-
-    The options `--set-name` and `--set-version` each take an argument and allow
-    you to explicitly set the name and version of the package you are creating.
+  * <%= Homebrew.help_for :create %>
 
   * `deps [--1] [-n] [--tree] [--all] [--installed]` <formula>:
     Show <formula>'s dependencies.
@@ -308,13 +293,7 @@ Note that these flags should only appear after a command.
 
     If `--rebase` is specified then `git pull --rebase` is used.
 
-  * `upgrade [install-options]` [<formulae>]:
-    Upgrade outdated, unpinned brews.
-
-    Options for the `install` command are also valid here.
-
-    If <formulae> are given, upgrade only the specified brews (but do so even
-    if they are pinned; see `pin`, `unpin`).
+  * <%= Homebrew.help_for :upgrade %>
 
   * `uses [--installed] [--recursive] [--devel|--HEAD]` <formula>:
     Show the formulae that specify <formula> as a dependency.
